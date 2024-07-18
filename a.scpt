@@ -13,6 +13,10 @@ on getClipboardContent()
     return clipboardContent
 end getClipboardContent
 
+-- クリップボードの内容を一時的に変更しておく
+set tempClipboardContent to "TEMP_CLIPBOARD_CONTENT"
+set the clipboard to tempClipboardContent
+
 -- 現在のクリップボードの内容を保存
 set initialClipboardContent to getClipboardContent()
 
@@ -31,7 +35,7 @@ repeat with attempt from 1 to 3
     set newClipboardContent to getClipboardContent()
     
     -- コピー操作が成功したか確認
-    if newClipboardContent is not equal to initialClipboardContent then
+    if newClipboardContent is not equal to tempClipboardContent then
         set copySuccess to true
         exit repeat
     end if
