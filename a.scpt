@@ -18,6 +18,7 @@ set initialClipboardContent to getClipboardContent()
 
 -- コピー操作を3回試行する
 set copySuccess to false
+set newClipboardContent to ""
 repeat with attempt from 1 to 3
     tell application "System Events"
         keystroke "c" using {command down} -- 現在の選択をコピー
